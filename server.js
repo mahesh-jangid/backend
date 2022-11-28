@@ -21,6 +21,11 @@ if (process.env.NODE_ENV === "developement") {
 }
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
@@ -45,12 +50,6 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound);
 app.use(errorHandler);
 
-// const corsOptions = { origin: true };
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 const PORT = process.env.PORT || 5000;
 app.listen(
   PORT,
