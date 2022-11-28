@@ -45,12 +45,12 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound);
 app.use(errorHandler);
 
-const corsOptions = {
-  origin: "https://mars-ecommerce1.onrender.com/",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+// const corsOptions = { origin: true };
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 const PORT = process.env.PORT || 5000;
 app.listen(
   PORT,
